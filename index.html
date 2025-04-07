@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architects of Inclusive Digital Education</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .poster {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #0077b6;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 42px;
+            margin: 0 0 20px 0;
+        }
+        .header h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin: 0;
+        }
+        
+        /* Layer section styling */
+        .layer-section {
+            padding: 0;
+            margin: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        
+        /* Layer header styling */
+        .layer-header {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .layer-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            color: #0077b6;
+            font-weight: bold;
+        }
+        .layer-title .diamond {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #0077b6;
+            transform: rotate(45deg);
+            margin-right: 12px;
+        }
+        .layer-button {
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .layer-button:hover {
+            background-color: #005b8a;
+        }
+        
+        /* Layer content styling */
+        .layer-content {
+            padding: 0 30px 30px 30px;
+            display: none; /* Hidden by default */
+        }
+        .layer-content.active {
+            display: block; /* Shown when active */
+        }
+        
+        /* Overview section */
+        .overview {
+            margin-bottom: 20px;
+        }
+        .overview h3 {
+            color: #0077b6;
+            margin-bottom: 10px;
+        }
+        .overview p {
+            line-height: 1.6;
+        }
+        
+        /* Component grid */
+        .component-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .component-item {
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .component-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .component-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .component-title {
+            font-weight: bold;
+            color: #0077b6;
+            margin-bottom: 5px;
+        }
+        .component-item .indicator {
+            height: 5px;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .indicator.blue { background-color: #0077b6; }
+        .indicator.orange { background-color: #ff9800; }
+        .indicator.green { background-color: #4caf50; }
+        .indicator.pink { background-color: #e91e63; }
+        
+        /* Action button */
+        .action-button {
+            display: inline-block;
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+        .action-button:hover {
+            background-color: #005b8a;
+        }
+        
+        /* Storytelling section */
+        .story-title {
+            font-size: 24px;
+            color: #0077b6;
+            margin: 20px 0;
+        }
+        .story-tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+        }
+        .story-tab {
+            padding: 15px 30px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        .story-tab.active {
+            color: #0077b6;
+        }
+        .story-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #0077b6;
+        }
+        .story-content {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+        .story-content.active {
+            display: block;
+        }
+        
+        /* User maps section */
+        .user-maps {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .user-maps h3 {
+            color: #0077b6;
+            margin-bottom: 20px;
+        }
+        .map-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .map-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8a100;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .map-button.blue {
+            background-color: #0077b6;
+        }
+        .map-button:hover {
+            opacity: 0.9;
+        }
+        .map-button i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="poster">
+            <!-- Header -->
+            <div class="header">
+                <h1>Architects of Inclusive Digital Education</h1>
+                <h2>Interactive Framework for Educational Technology</h2>
+            </div>
+            
+            <!-- Layer 1 -->
+            <div class="layer-section">
+                <div class="layer-header" onclick="toggleLayer('layer1')">
+                    <div class="layer-title">
+                        <span class="diamond"></span>
+                        LAYER 1
+                    </div>
+                    <button class="layer-button" id="layer1-button">Hide</button>
+                </div>
+                
+                <div class="layer-content active" id="layer1-content">
+                    <div class="overview">
+                        <h3>Overview</h3>
+                        <p>This layer provides a high-level overview of the inclusive digital education architecture.</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s2fb7bb46d54b4c46929d461bc93284e7%3Fithint%3Dphoto%26e%3DIeE4pS%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s2fb7bb46d54b4c46929d461bc93284e7&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VVYTd0eTlMMVVaTWtwMUdHOGt5aE9jQjZoYWpNWm90WHR4Y25LbUJkSWljUkE%5FZT1JZUU0cFM&v=photos" class="action-button" target="_blank">
+                            View Visualization
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Layer 2 -->
+            <div class="layer-section">
+                <div class="layer-header" onclick="toggleLayer('layer2')">
+                    <div class="layer-title">
+                        <span class="diamond"></span>
+                        LAYER 2
+                    </div>
+                    <button class="layer-button" id="layer2-button">Hide</button>
+                </div>
+                
+                <div class="layer-content active" id="layer2-content">
+                    <p>Interactive zones revealing the components of our educational architecture:</p>
+                    
+                    <div class="component-grid">
+                        <!-- Capability Model -->
+                        <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s8dcab19234c74a8596c3be59a4a53add%3Fithint%3Dphoto%26e%3DyQeawW%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s8dcab19234c74a8596c3be59a4a53add&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VaS3h5bzNITklWS2xzTy1XYVNsT3QwQnJRNXpCSGUxYTZXblhjUXVBTGVlaWc%5FZT15UWVhd1c&v=photos" class="component-item" target="_blank">
+                            <div class="component-icon">📊</div>
+                            <div class="component-title">CAPABILITY MODEL</div>
+                            <div class="indicator blue"></div>
+                        </a>
+                        
+                        <!-- Technology Architecture -->
+                        <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s9883f351f07f47669377d9deabd24326%3Fithint%3Dphoto%26e%3DNlRHnf%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s9883f351f07f47669377d9deabd24326&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VWSHpnNWhfOEdaSGszZlozcXZTUXlZQnZFUWxHZGpVN2NmVUxJTDNwM05MNFE%5FZT1ObFJIbmY&v=photos" class="component-item" target="_blank">
+                            <div class="component-icon">💻</div>
+                            <div class="component-title">TECHNOLOGY ARCHITECTURE</div>
+                            <div class="indicator orange"></div>
+                        </a>
+                        
+                        <!-- Process Workflows -->
+                        <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s5674927f3ba4494690757d8e250b2655%3Fithint%3Dphoto%26e%3DO9anNq%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s5674927f3ba4494690757d8e250b2655&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VYLVNkRmFrTzBaSmtIVjlqaVVMSmxVQlJFb3RRNUkyWTJPRkRzWW9yajc4Q3c%5FZT1POWFuTnE&v=photos" class="component-item" target="_blank">
+                            <div class="component-icon">⚙️</div>
+                            <div class="component-title">PROCESS WORKFLOWS</div>
+                            <div class="indicator green"></div>
+                        </a>
+                        
+                        <!-- Governance Framework -->
+                        <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s6a719ed0169a432dae3c5c0320ee0236%3Fithint%3Dphoto%26e%3D5NcRL5%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s6a719ed0169a432dae3c5c0320ee0236&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VkQ2VjV3FhRmkxRHJqeGNBeUR1QWpZQklxTzZwMDNreE5JNm5wSFA5TTE5a1E%5FZT01TmNSTDU&v=photos" class="component-item" target="_blank">
+                            <div class="component-icon">📝</div>
+                            <div class="component-title">GOVERNANCE FRAMEWORK</div>
+                            <div class="indicator pink"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Storytelling Elements -->
+            <div class="layer-section">
+                <div class="layer-header" onclick="toggleLayer('layer3')">
+                    <div class="layer-title">
+                        <span class="diamond"></span>
+                        STORYTELLING ELEMENTS
+                    </div>
+                    <button class="layer-button" id="layer3-button">Hide</button>
+                </div>
+                
+                <div class="layer-content active" id="layer3-content">
+                    <div class="story-title">Bridging the Digital Divide – A Rural Student's Journey</div>
+                    
+                    <div class="story-tabs">
+                        <div class="story-tab active" onclick="switchTab('character')">CHARACTER</div>
+                        <div class="story-tab" onclick="switchTab('journey')">JOURNEY</div>
+                        <div class="story-tab" onclick="switchTab('narratives')">NARRATIVES</div>
+                    </div>
+                    
+                    <div id="character-content" class="story-content active">
+                        <h3>Meet Our Character</h3>
+                        <p>Our story follows a rural student who faces challenges accessing digital education resources. Through this character, we explore the barriers to inclusive digital education and how our architecture helps overcome them.</p>
+                    </div>
+                    
+                    <div id="journey-content" class="story-content">
+                        <h3>The Learning Journey</h3>
+                        <p>Follow our character's path from limited connectivity to full engagement with digital education resources. This journey illustrates how each layer of our architecture supports inclusive access.</p>
+                        <ul>
+                            <li><strong>Discovery:</strong> Finding educational resources despite connectivity challenges</li>
+                            <li><strong>Access:</strong> Obtaining content through multi-modal delivery systems</li>
+                            <li><strong>Engagement:</strong> Participating fully in the learning community</li>
+                            <li><strong>Mastery:</strong> Demonstrating knowledge acquisition through accessible assessment</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="narratives-content" class="story-content">
+                        <h3>Narrative Frameworks</h3>
+                        <p>These storytelling elements create meaningful connections between learners and educational content:</p>
+                        <ul>
+                            <li>Personal journey stories highlighting diverse experiences</li>
+                            <li>Problem-solving narratives engaging critical thinking</li>
+                            <li>Interactive storylines adapting to different learning preferences</li>
+                            <li>Community-based narratives connecting learning to real-world contexts</li>
+                        </ul>
+                        <p>More examples and implementation guidelines available in the full framework documentation.</p>
+                    </div>
+                    
+                    <div class="user-maps">
+                        <h3>Navigable User Maps</h3>
+                        <div class="map-buttons">
+                            <a href="#" class="map-button">+ Student Navigation Map</a>
+                            <a href="#" class="map-button blue">+ Teacher Navigation Map</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Function to toggle layer visibility
+        function toggleLayer(layerId) {
+            const content = document.getElementById(layerId + '-content');
+            const button = document.getElementById(layerId + '-button');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                button.textContent = 'Show';
+            } else {
+                content.classList.add('active');
+                button.textContent = 'Hide';
+            }
+        }
+        
+        // Function to switch story tabs
+        function switchTab(tabId) {
+            // Hide all content
+            document.querySelectorAll('.story-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.story-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activate selected content and tab
+            document.getElementById(tabId + '-content').classList.add('active');
+            document.querySelector(`.story-tab:nth-child(${tabId === 'character' ? 1 : tabId === 'journey' ? 2 : 3})`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
