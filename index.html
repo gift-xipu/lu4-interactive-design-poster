@@ -37,7 +37,7 @@
             font-weight: normal;
             margin: 0;
         }
-        
+
         /* Layer section styling */
         .layer-section {
             padding: 0;
@@ -45,7 +45,7 @@
             border: 1px solid #e0e0e0;
             border-radius: 8px;
         }
-        
+
         /* Layer header styling */
         .layer-header {
             padding: 20px 30px;
@@ -85,7 +85,7 @@
         .layer-button:hover {
             background-color: #005b8a;
         }
-        
+
         /* Layer content styling */
         .layer-content {
             padding: 0 30px 30px 30px;
@@ -94,7 +94,7 @@
         .layer-content.active {
             display: block; /* Shown when active */
         }
-        
+
         /* Overview section */
         .overview {
             margin-bottom: 20px;
@@ -106,7 +106,7 @@
         .overview p {
             line-height: 1.6;
         }
-        
+
         /* Component grid */
         .component-grid {
             display: flex;
@@ -124,6 +124,8 @@
             background-color: white;
             transition: transform 0.2s;
             cursor: pointer;
+            text-decoration: none; /* Added: Ensure links look like items */
+            color: inherit; /* Added: Ensure links look like items */
         }
         .component-item:hover {
             transform: translateY(-5px);
@@ -148,7 +150,7 @@
         .indicator.orange { background-color: #ff9800; }
         .indicator.green { background-color: #4caf50; }
         .indicator.pink { background-color: #e91e63; }
-        
+
         /* Action button */
         .action-button {
             display: inline-block;
@@ -165,7 +167,7 @@
         .action-button:hover {
             background-color: #005b8a;
         }
-        
+
         /* Storytelling section */
         .story-title {
             font-size: 24px;
@@ -182,6 +184,7 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
+            color: #333; /* Default color */
         }
         .story-tab.active {
             color: #0077b6;
@@ -204,54 +207,133 @@
         .story-content.active {
             display: block;
         }
-        
-        /* User maps section */
-        .user-maps {
-            margin-top: 30px;
+
+        /* Africa overview section */
+        .africa-overview {
+            background-color: #00205B;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .africa-overview h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
             text-align: center;
         }
-        .user-maps h3 {
-            color: #0077b6;
-            margin-bottom: 20px;
-        }
-        .map-buttons {
+        .challenges-solutions {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-        .map-button {
+        .challenges-box {
+            background-color: #FFFACD;
+            color: black;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .solutions-box {
+            background-color: #CCFFCC;
+            color: black;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .map-placeholder {
+            flex: 1;
+            min-width: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f8a100;
+            text-align: center;
+            font-style: italic;
+        }
+        .challenges-box h3, .solutions-box h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .challenges-box ul, .solutions-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .challenges-box li, .solutions-box li {
+            margin-bottom: 5px;
+        }
+
+        /* User maps section */
+        .user-maps {
+            margin-top: 30px;
+        }
+        .map-buttons {
+            display: flex;
+            /* flex-direction: column; */ /* REMOVED: This caused vertical stacking */
+            flex-wrap: wrap; /* ADDED: Allows buttons to wrap */
+            justify-content: center; /* Center buttons horizontally */
+            gap: 15px; /* Adjusted gap for side-by-side layout */
+            width: 100%; /* Container takes full width */
+        }
+        .map-button {
+            display: flex; /* Use flex for icon alignment */
+            align-items: center;
+            justify-content: center;
+            background-color: #f8a100; /* Default button color */
             color: white;
             padding: 12px 24px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.2s;
+            /* Removed margin-bottom: 15px; as gap handles spacing */
+            text-align: center; /* Ensure text is centered */
+            flex-grow: 0; /* Prevent buttons from growing */
+            flex-shrink: 0; /* Prevent buttons from shrinking too much */
         }
         .map-button.blue {
             background-color: #0077b6;
         }
+        .map-button.green {
+            background-color: #4caf50; /* Corrected color based on class name */
+        }
+        .map-button.long-button {
+            background-color: #0077b6;
+             /* width: 100%; */ /* REMOVED: This forced the button to take full width */
+             /* Adjusted padding for consistency, or leave as is if longer button needs more padding */
+             padding: 12px 24px; /* Example: make padding consistent */
+        }
         .map-button:hover {
             opacity: 0.9;
         }
-        .map-button i {
+        .map-button i { /* If you add icons later */
             margin-right: 8px;
         }
+
+        /* === DEPRECATED/OVERRIDDEN map-buttons rule === */
+        /* This block is likely overridden by the later .map-buttons rule */
+        /* You can safely remove this if the rule below it is the intended one */
+        /*
+        .map-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        */
+         /* === End of DEPRECATED rule === */
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="poster">
-            <!-- Header -->
             <div class="header">
                 <h1>Architects of Inclusive Digital Education</h1>
                 <h2>Interactive Framework for Educational Technology</h2>
             </div>
-            
-            <!-- Layer 1 -->
+
             <div class="layer-section">
                 <div class="layer-header" onclick="toggleLayer('layer1')">
                     <div class="layer-title">
@@ -260,22 +342,51 @@
                     </div>
                     <button class="layer-button" id="layer1-button">Hide</button>
                 </div>
-                
+
                 <div class="layer-content active" id="layer1-content">
                     <div class="overview">
                         <h3>Overview</h3>
                         <p>This layer provides a high-level overview of the inclusive digital education architecture.</p>
                     </div>
-                    
-                    <div style="text-align: center;">
+
+                    <div class="africa-overview">
+                        <h2>Enterprise Architects of Inclusive Digital Education In Rural South African Communities</h2>
+
+                        <div class="challenges-solutions">
+                            <div class="challenges-box">
+                                <h3>Challenges</h3>
+                                <ul>
+                                    <li>Limited Broadband Access</li>
+                                    <li>Mobile-First Connectivity</li>
+                                    <li>Electricity Constraints</li>
+                                </ul>
+                            </div>
+
+                            <div class="map-placeholder">
+                                African Map Illustration
+                            </div>
+
+                            <div class="solutions-box">
+                                <h3>Solutions</h3>
+                                <ul>
+                                    <li>Mesh networks for connectivity</li>
+                                    <li>Cloud based learning platforms</li>
+                                    <li>Offline access</li>
+                                    <li>Satellite Internet</li>
+                                    <li>Wireless Broadband</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px;">
                         <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s2fb7bb46d54b4c46929d461bc93284e7%3Fithint%3Dphoto%26e%3DIeE4pS%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s2fb7bb46d54b4c46929d461bc93284e7&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VVYTd0eTlMMVVaTWtwMUdHOGt5aE9jQjZoYWpNWm90WHR4Y25LbUJkSWljUkE%5FZT1JZUU0cFM&v=photos" class="action-button" target="_blank">
-                            View Visualization
+                            Enterprise Architecture
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Layer 2 -->
+
             <div class="layer-section">
                 <div class="layer-header" onclick="toggleLayer('layer2')">
                     <div class="layer-title">
@@ -284,33 +395,29 @@
                     </div>
                     <button class="layer-button" id="layer2-button">Hide</button>
                 </div>
-                
+
                 <div class="layer-content active" id="layer2-content">
                     <p>Interactive zones revealing the components of our educational architecture:</p>
-                    
+
                     <div class="component-grid">
-                        <!-- Capability Model -->
                         <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s8dcab19234c74a8596c3be59a4a53add%3Fithint%3Dphoto%26e%3DyQeawW%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s8dcab19234c74a8596c3be59a4a53add&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VaS3h5bzNITklWS2xzTy1XYVNsT3QwQnJRNXpCSGUxYTZXblhjUXVBTGVlaWc%5FZT15UWVhd1c&v=photos" class="component-item" target="_blank">
                             <div class="component-icon">📊</div>
                             <div class="component-title">CAPABILITY MODEL</div>
                             <div class="indicator blue"></div>
                         </a>
-                        
-                        <!-- Technology Architecture -->
+
                         <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s9883f351f07f47669377d9deabd24326%3Fithint%3Dphoto%26e%3DNlRHnf%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s9883f351f07f47669377d9deabd24326&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VWSHpnNWhfOEdaSGszZlozcXZTUXlZQnZFUWxHZGpVN2NmVUxJTDNwM05MNFE%5FZT1ObFJIbmY&v=photos" class="component-item" target="_blank">
                             <div class="component-icon">💻</div>
                             <div class="component-title">TECHNOLOGY ARCHITECTURE</div>
                             <div class="indicator orange"></div>
                         </a>
-                        
-                        <!-- Process Workflows -->
+
                         <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s5674927f3ba4494690757d8e250b2655%3Fithint%3Dphoto%26e%3DO9anNq%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s5674927f3ba4494690757d8e250b2655&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VYLVNkRmFrTzBaSmtIVjlqaVVMSmxVQlJFb3RRNUkyWTJPRkRzWW9yajc4Q3c%5FZT1POWFuTnE&v=photos" class="component-item" target="_blank">
                             <div class="component-icon">⚙️</div>
                             <div class="component-title">PROCESS WORKFLOWS</div>
                             <div class="indicator green"></div>
                         </a>
-                        
-                        <!-- Governance Framework -->
+
                         <a href="https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2F26A42AEBC604F248%21s6a719ed0169a432dae3c5c0320ee0236%3Fithint%3Dphoto%26e%3D5NcRL5%26migratedtospo%3Dtrue&sw=bypassConfig&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s6a719ed0169a432dae3c5c0320ee0236&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2kvYy8yNmE0MmFlYmM2MDRmMjQ4L0VkQ2VjV3FhRmkxRHJqeGNBeUR1QWpZQklxTzZwMDNreE5JNm5wSFA5TTE5a1E%5FZT01TmNSTDU&v=photos" class="component-item" target="_blank">
                             <div class="component-icon">📝</div>
                             <div class="component-title">GOVERNANCE FRAMEWORK</div>
@@ -319,8 +426,7 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Storytelling Elements -->
+
             <div class="layer-section">
                 <div class="layer-header" onclick="toggleLayer('layer3')">
                     <div class="layer-title">
@@ -329,21 +435,21 @@
                     </div>
                     <button class="layer-button" id="layer3-button">Hide</button>
                 </div>
-                
+
                 <div class="layer-content active" id="layer3-content">
                     <div class="story-title">Bridging the Digital Divide – A Rural Student's Journey</div>
-                    
+
                     <div class="story-tabs">
                         <div class="story-tab active" onclick="switchTab('character')">CHARACTER</div>
                         <div class="story-tab" onclick="switchTab('journey')">JOURNEY</div>
                         <div class="story-tab" onclick="switchTab('narratives')">NARRATIVES</div>
                     </div>
-                    
+
                     <div id="character-content" class="story-content active">
                         <h3>Meet Our Character</h3>
                         <p>Our story follows a rural student who faces challenges accessing digital education resources. Through this character, we explore the barriers to inclusive digital education and how our architecture helps overcome them.</p>
                     </div>
-                    
+
                     <div id="journey-content" class="story-content">
                         <h3>The Learning Journey</h3>
                         <p>Follow our character's path from limited connectivity to full engagement with digital education resources. This journey illustrates how each layer of our architecture supports inclusive access.</p>
@@ -354,7 +460,7 @@
                             <li><strong>Mastery:</strong> Demonstrating knowledge acquisition through accessible assessment</li>
                         </ul>
                     </div>
-                    
+
                     <div id="narratives-content" class="story-content">
                         <h3>Narrative Frameworks</h3>
                         <p>These storytelling elements create meaningful connections between learners and educational content:</p>
@@ -366,25 +472,26 @@
                         </ul>
                         <p>More examples and implementation guidelines available in the full framework documentation.</p>
                     </div>
-                    
+
                     <div class="user-maps">
-                        <h3>Navigable User Maps</h3>
                         <div class="map-buttons">
-                            <a href="#" class="map-button">+ Student Navigation Map</a>
-                            <a href="#" class="map-button blue">+ Teacher Navigation Map</a>
+                             <a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL3UvYy8yNmE0MmFlYmM2MDRmMjQ4L0VVTVB0UEVXYUxGUG9sZl9Oa0VMMjc4QjlqSHg0VUUwY0d0Q1pkdlBNQWNMLXc%5FZT1INEQ5Wlk&cid=26A42AEBC604F248&id=26A42AEBC604F248%21sf1b40f4368164fb1a257ff36410bdbbf&parId=26A42AEBC604F248%21105&o=OneUp" target="_blank" class="map-button">Student Navigation Map</a>
+                            <a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL3UvYy8yNmE0MmFlYmM2MDRmMjQ4L0VVTVB0UEVXYUxGUG9sZl9Oa0VMMjc4QjlqSHg0VUUwY0d0Q1pkdlBNQWNMLXc%5FZT1INEQ5Wlk&cid=26A42AEBC604F248&id=26A42AEBC604F248%21sf1b40f4368164fb1a257ff36410bdbbf&parId=26A42AEBC604F248%21105&o=OneUp" target="_blank" class="map-button blue">Teacher Navigation Map</a>
+                            <a href="https://jumpshare.com/v/7aXncDhaEcpkj1iN3UhE" target="_blank" class="map-button green">Character journey narration- video</a>
+                            <a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvYy8yNmE0MmFlYmM2MDRmMjQ4L0VTM3NVeTRmbnAxSm1lM3BPbVZQbjRnQmhIbUt2cXFUOGowNGFUZ0hyaTF1bFE%5FZT1aM3ZsZ3Y&cid=26A42AEBC604F248&id=26A42AEBC604F248%21s2e53ec2d9e1f499d99ede93a654f9f88&parId=26A42AEBC604F248%21105&o=OneUp" target="_blank" class="map-button long-button">BRIDGING THE DIGITAL DIVIDE –A RURAL STUDENT'S JOURNEY- comic strip</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script>
         // Function to toggle layer visibility
         function toggleLayer(layerId) {
             const content = document.getElementById(layerId + '-content');
             const button = document.getElementById(layerId + '-button');
-            
+
             if (content.classList.contains('active')) {
                 content.classList.remove('active');
                 button.textContent = 'Show';
@@ -393,23 +500,39 @@
                 button.textContent = 'Hide';
             }
         }
-        
+
         // Function to switch story tabs
         function switchTab(tabId) {
             // Hide all content
             document.querySelectorAll('.story-content').forEach(content => {
-                content.classList.remove('active');
+                // Check if it's one of the tab contents before hiding
+                if (content.id.includes('-content') && !content.closest('.user-maps')) {
+                     content.classList.remove('active');
+                }
             });
-            
+
             // Deactivate all tabs
             document.querySelectorAll('.story-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            
+
             // Activate selected content and tab
-            document.getElementById(tabId + '-content').classList.add('active');
-            document.querySelector(`.story-tab:nth-child(${tabId === 'character' ? 1 : tabId === 'journey' ? 2 : 3})`).classList.add('active');
+            const activeContent = document.getElementById(tabId + '-content');
+            if (activeContent) {
+                 activeContent.classList.add('active');
+            }
+             // Find the clicked tab and activate it
+             document.querySelectorAll('.story-tab').forEach(tab => {
+                 if(tab.textContent.toLowerCase().includes(tabId)) {
+                     tab.classList.add('active');
+                 }
+             });
         }
+
+        // Initialize the first tab as active on load
+        document.addEventListener('DOMContentLoaded', () => {
+             switchTab('character'); // Set the initial active tab
+        });
     </script>
 </body>
 </html>
